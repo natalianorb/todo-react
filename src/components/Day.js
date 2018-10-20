@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Task from './Task'
 
-function Day () {
-  const header = <h2> Сб, 20</h2>
-  const body = <div>
-    <span>10:00</span>
-    <span>Wake up</span>
-  </div>
+class Day extends Component  {
+  render () {
+    const { tasks } = this.props;
+    const tasksElems = tasks.map(task => {
+      return (
+        <li key={ task.id } >
+          <Task task={ task }/>
+        </li>
+      ) 
+    });
   
-  return (
-    <div className="day">
-      {header}
-      {body}
-    </div>
-  )
+    return (
+      <div>
+        <div> 20 окт </div>
+        <ul>
+          { tasksElems }          
+        </ul>
+      </div>
+    )
+  }
 }
 
 export default Day
